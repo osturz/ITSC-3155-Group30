@@ -12,10 +12,12 @@ public class Games {
     
     private String name;
     private double price;
+    private String[] categories;
     
-    public Games(String name, double price){
+    public Games(String name, double price, String[] tags){
         this.name = name;
         this.price = price;
+        this.categories = tags;
     }
      
     public String getName() {
