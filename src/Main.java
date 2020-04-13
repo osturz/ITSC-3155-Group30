@@ -7,6 +7,20 @@ import java.util.*;
 /**
  *
  * @author ostur
+ * 3 classes so far, Main, Games, and Catalog
+ * 
+ * Main initializes the Jlist with all games, to later be manipulated by searches or filters
+ * 
+ * Implemented the sort by price filters so far, need to add category tags to individual games in order to implement the rest
+ * 
+ * When form window is opened, updates the current display to match the initial catalog, as well as converts Game objects to an array of strings
+ * that display the price, and then the game name
+ * 
+ * Search button will search through the initial catalog for any substring matches, regardless of case
+ * 
+ * lowToHigh and highToLow will sort whatever the previous shown list of products into the corresponding order
+ * 
+ * Soon to implement is the category tags, need to make sure once the tags have been searched for, sorting by price will work correctly
  */
 public class Main extends javax.swing.JFrame {
     
@@ -312,7 +326,7 @@ public class Main extends javax.swing.JFrame {
                     public String getElementAt(int i) { return strings[i]; }
                 });
             }
-            //
+            
             
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -354,6 +368,7 @@ public class Main extends javax.swing.JFrame {
         });
     }
     
+    /*
     public ArrayList<Games> getCurrentResults(){
         int sizeResults = jList1.getModel().getSize();
         String[] stringResults = new String[sizeResults];
@@ -373,15 +388,15 @@ public class Main extends javax.swing.JFrame {
             System.out.println(stringResults[i]);
         }
         
-        /*
+        
         for(int i = 0; i < sizeResults; i++){
             currentGames.add(gameCatalog.gameByName(stringResults[i]));
         }
-        */
+        
         return currentGames;
         
     }
-    
+    */
     public String[] getNamesAndPrice(ArrayList<Games> list){
         String[] names = new String[list.size()];
         
