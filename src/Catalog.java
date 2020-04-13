@@ -83,28 +83,28 @@ public class Catalog {
     
     
     public void createGames(){
-        gamesList.add(new Games("Fortnite", 24.99,new String[]{"Action"}));
-        gamesList.add(new Games("Counter-Strike: Global Offensive", 14.99,new String[]{"Action"}));
+        gamesList.add(new Games("Fortnite", 24.99,new String[]{"Action","Shooter"}));
+        gamesList.add(new Games("Counter-Strike: Global Offensive", 14.99,new String[]{"Action","Shooter"}));
         gamesList.add(new Games("Minecraft", 9.99,new String[]{"Open World"}));
         gamesList.add(new Games("Rust", 39.99,new String[]{"Open World"}));
         gamesList.add(new Games("League of Legends", 4.99,new String[]{"Strategy"}));
         gamesList.add(new Games("Monopoly", 9.99,new String[]{"Board Game"}));
         gamesList.add(new Games("Tetris", 3.99,new String[]{"Board Game"}));
-        gamesList.add(new Games("World of Warcraft", 49.99,new String[]{"Strategy"}));
+        gamesList.add(new Games("World of Warcraft", 49.99,new String[]{"Strategy","Action"}));
         gamesList.add(new Games("Chess", 14.99,new String[]{"Board Game","Strategy"}));
         gamesList.add(new Games("Checkers", 9.99,new String[]{"Board Game","Strategy"}));
         gamesList.add(new Games("Battleship", 9.99,new String[]{"Board Game","Strategy"}));
         gamesList.add(new Games("Uno", 4.99,new String[]{"Board Game"}));
         gamesList.add(new Games("Scrabble", 14.99,new String[]{"Board Game","Strategy"}));
-        gamesList.add(new Games("Call of Duty", 39.99,new String[]{"Action"}));
-        gamesList.add(new Games("Battlefield", 39.99,new String[]{"Action"}));
+        gamesList.add(new Games("Call of Duty", 39.99,new String[]{"Action","Shooter"}));
+        gamesList.add(new Games("Battlefield", 39.99,new String[]{"Action","Shooter"}));
         gamesList.add(new Games("Life", 19.99,new String[]{"Board Game"}));
         gamesList.add(new Games("Sims", 29.99,new String[]{"Open World"}));
         gamesList.add(new Games("Grand Theft Auto", 44.99,new String[]{"Action"}));
         gamesList.add(new Games("Animal Crossing", 14.99,new String[]{"Open World"}));
         gamesList.add(new Games("FIFA 2020", 39.99,new String[]{"Sports"}));
         gamesList.add(new Games("Madden", 34.99,new String[]{"Sports"}));
-        gamesList.add(new Games("Halo", 39.99,new String[]{"Action"}));
+        gamesList.add(new Games("Halo", 39.99,new String[]{"Action","Shooter"}));
         gamesList.add(new Games("Mario Kart", 9.99,new String[]{"Racing"}));
     }
 }
