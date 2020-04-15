@@ -54,8 +54,8 @@ public class Main extends javax.swing.JFrame {
         highToLowCheck = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         lowToHighCheck = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        multiplayer = new javax.swing.JCheckBox();
+        singleplayer = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
         jCheckBox7 = new javax.swing.JCheckBox();
@@ -111,9 +111,19 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox3.setText("jCheckBox3");
+        multiplayer.setText("Multiplayer Capable");
+        multiplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multiplayerActionPerformed(evt);
+            }
+        });
 
-        jCheckBox4.setText("jCheckBox4");
+        singleplayer.setText("Singleplayer Only");
+        singleplayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                singleplayerActionPerformed(evt);
+            }
+        });
 
         jCheckBox5.setText("jCheckBox5");
 
@@ -182,8 +192,8 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(highToLowCheck)
                                     .addComponent(jCheckBox6)
                                     .addComponent(jCheckBox5)
-                                    .addComponent(jCheckBox4)
-                                    .addComponent(jCheckBox3)
+                                    .addComponent(singleplayer)
+                                    .addComponent(multiplayer)
                                     .addComponent(lowToHighCheck))
                                 .addGap(76, 76, 76)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,7 +202,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(jButton4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton5)))))
-                        .addGap(0, 130, Short.MAX_VALUE))))
+                        .addGap(0, 122, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +227,9 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lowToHighCheck)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3)
+                        .addComponent(multiplayer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4)
+                        .addComponent(singleplayer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,19 +300,32 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        
-        
-        //ArrayList<Games> currentResults = getCurrentResults();
-        
-        for(int i = 0; i < currentDisplay.size(); i++){
-           System.out.println(currentDisplay.get(i).getName());
+        //reset
+        currentDisplay = new ArrayList<>();
+        for(int i = 0; i < gameCatalog.getSize(); i++){
+            currentDisplay.add(gameCatalog.getGame(i));
         }
         
-        int size = currentDisplay.size();
-        //String[] newList = new String[size];
+        //restartJList();
         
-        //String[] currentValues = String[currentResults.size()];
-        if(highToLowCheck.isSelected() || lowToHighCheck.isSelected()){
+        //multiplayer filter
+        if(multiplayer.isSelected()){
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Multiplayer");
+            //updateJList();
+        }
+        
+        if(singleplayer.isSelected()){
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Singleplayer");
+            //updateJList();
+        }
+        
+        if(!highToLowCheck.isSelected() && !lowToHighCheck.isSelected()){
+            updateJList(currentDisplay);
+        }else{
+        //restartJList();
+        int size = currentDisplay.size();
+        
+        //if(highToLowCheck.isSelected() || lowToHighCheck.isSelected()){
             
             ArrayList<Games> copy = new ArrayList<>();
             for(int i = 0; i < size; i++){
@@ -320,16 +343,62 @@ public class Main extends javax.swing.JFrame {
                 */
                 
                 String[] newList = getNamesAndPrice(copy);
+                /*
                 jList1.setModel(new javax.swing.AbstractListModel<String>() {
                     String[] strings = newList;
                     public int getSize() { return strings.length; }
                     public String getElementAt(int i) { return strings[i]; }
                 });
+                */
+                updateJList(copy);
+            } 
+            else {
+                copy.sort(priceCompare);
+                String[] list = getNamesAndPrice(copy);
+                int index = 0;
+                String[] realList = new String[list.length];
+                for(int i = list.length-1; i >= 0; i--){
+                    realList[i] = list[index];
+                    index++;
+                }
+                ArrayList<Games> copy2 = new ArrayList<>();
+                
+                for(int i = copy.size()-1; i >= 0; i--) {
+                    copy2.add(copy.get(i));
+                    
+                }
+                /*
+                jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                    String[] strings = realList;
+                    public int getSize() { return strings.length; }
+                    public String getElementAt(int i) { return strings[i]; }
+                });
+                */
+                updateJList(copy2);
             }
             
             
+            
+        //}
+            
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void multiplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplayerActionPerformed
+        // TODO add your handling code here:
+        
+        if(singleplayer.isSelected()){
+            singleplayer.setSelected(false);
+        }
+    }//GEN-LAST:event_multiplayerActionPerformed
+
+    private void singleplayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleplayerActionPerformed
+        // TODO add your handling code here:
+        
+        if(multiplayer.isSelected()){
+            multiplayer.setSelected(false);
+        }
+    }//GEN-LAST:event_singleplayerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,6 +480,25 @@ public class Main extends javax.swing.JFrame {
         }
         return names;
     }
+    //?
+    public void updateJList(ArrayList<Games> dis){
+        String[] displayStrings = getNamesAndPrice(dis);
+
+        
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = displayStrings;
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+        });
+    }
+    //?
+    public void restartJList() {
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = new String[]{""};
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+        });
+    }
     
     
 
@@ -421,8 +509,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
@@ -434,7 +520,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JCheckBox lowToHighCheck;
+    private javax.swing.JCheckBox multiplayer;
     private javax.swing.JTextField searchTextBox;
+    private javax.swing.JCheckBox singleplayer;
     // End of variables declaration//GEN-END:variables
 }
 
