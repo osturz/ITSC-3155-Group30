@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.util.*;
 /**
  *
  * @author ostur
@@ -12,9 +12,9 @@ public class Games {
     
     private String name;
     private double price;
-    private String[] categories;
+    private ArrayList<String> categories;
     
-    public Games(String name, double price, String[] tags){
+    public Games(String name, double price, ArrayList<String> tags){
         this.name = name;
         this.price = price;
         this.categories = tags;
@@ -30,5 +30,9 @@ public class Games {
     
     public String getPriceString() {
         return Double.toString(this.price);
+    }
+    
+    public ArrayList<String> getTags(){
+        return this.categories;
     }
 }
