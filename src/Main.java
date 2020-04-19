@@ -26,6 +26,7 @@ public class Main extends javax.swing.JFrame {
     
     private Catalog gameCatalog = new Catalog();
     private ArrayList<Games> currentDisplay = new ArrayList<>();
+    private Cart cart = new Cart();
     //private ArrayList<Games> currentResults = new ArrayList<>();
     
     /**
@@ -64,7 +65,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        addToCart = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -149,10 +150,10 @@ public class Main extends javax.swing.JFrame {
 
         jButton4.setText("More Info");
 
-        jButton5.setText("Add to Cart");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        addToCart.setText("Add to Cart");
+        addToCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                addToCartActionPerformed(evt);
             }
         });
 
@@ -201,7 +202,7 @@ public class Main extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5)))))
+                                        .addComponent(addToCart)))))
                         .addGap(0, 122, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -245,7 +246,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
-                            .addComponent(jButton5))))
+                            .addComponent(addToCart))))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
 
@@ -262,9 +263,11 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_highToLowCheckActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        //cart.addToCart(currentDisplay);
+        
+    }//GEN-LAST:event_addToCartActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for(int i = 0; i < gameCatalog.getSize(); i++){
@@ -503,12 +506,12 @@ public class Main extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addToCart;
     private javax.swing.JCheckBox highToLowCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
