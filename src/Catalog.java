@@ -60,21 +60,21 @@ public class Catalog {
         }
         return results;
     }
-    /*
+    
     public Games gameByName(String name){
         
         Games returnGame = null;
         //test
-        System.out.println(name);
+        //System.out.println(name);
         for(int i = 0; i < gamesList.size(); i++){
             if(gamesList.get(i).getName().equals(name)){
-                
+                System.out.println(gamesList.get(i).getName());
                 returnGame = gamesList.get(i);
             }
         }
         return returnGame;
     }
-    */
+    
     public int getSize(){
         return gamesList.size();
     }

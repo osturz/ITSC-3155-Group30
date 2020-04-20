@@ -38,14 +38,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="sports" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="cartBalance" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -59,13 +59,13 @@
                           <Component id="jLabel4" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="racing" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="highToLowCheck" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="action" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="openworld" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="singleplayer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="multiplayer" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lowToHighCheck" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
@@ -74,12 +74,12 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addToCart" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="130" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -91,7 +91,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cartBalance" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -111,17 +111,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lowToHighCheck" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                      <Component id="multiplayer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                      <Component id="singleplayer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                      <Component id="openworld" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                      <Component id="action" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
+                      <Component id="sports" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
+                      <Component id="racing" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -130,7 +130,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addToCart" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -148,7 +148,7 @@
         <Property name="text" type="java.lang.String" value="Smoke"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="cartBalance">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cart: $0.00"/>
       </Properties>
@@ -197,34 +197,40 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lowToHighCheckActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+    <Component class="javax.swing.JCheckBox" name="multiplayer">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox3"/>
+        <Property name="text" type="java.lang.String" value="Multiplayer Capable"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="multiplayerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="singleplayer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Singleplayer Only"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="singleplayerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="openworld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Open World"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+    <Component class="javax.swing.JCheckBox" name="action">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox4"/>
+        <Property name="text" type="java.lang.String" value="Action"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+    <Component class="javax.swing.JCheckBox" name="sports">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox5"/>
+        <Property name="text" type="java.lang.String" value="Sports"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+    <Component class="javax.swing.JCheckBox" name="racing">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox6"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox7"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox8"/>
+        <Property name="text" type="java.lang.String" value="Racing"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
@@ -265,12 +271,12 @@
         <Property name="text" type="java.lang.String" value="More Info"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="addToCart">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add to Cart"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addToCartActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

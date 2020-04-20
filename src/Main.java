@@ -47,7 +47,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cartBalance = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         searchTextBox = new javax.swing.JTextField();
@@ -57,10 +57,10 @@ public class Main extends javax.swing.JFrame {
         lowToHighCheck = new javax.swing.JCheckBox();
         multiplayer = new javax.swing.JCheckBox();
         singleplayer = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
+        openworld = new javax.swing.JCheckBox();
+        action = new javax.swing.JCheckBox();
+        sports = new javax.swing.JCheckBox();
+        racing = new javax.swing.JCheckBox();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
@@ -77,7 +77,7 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Smoke");
 
-        jLabel2.setText("Cart: $0.00");
+        cartBalance.setText("Cart: $0.00");
 
         jButton1.setText("Visit Cart");
 
@@ -126,13 +126,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox5.setText("jCheckBox5");
+        openworld.setText("Open World");
 
-        jCheckBox6.setText("jCheckBox6");
+        action.setText("Action");
 
-        jCheckBox7.setText("jCheckBox7");
+        sports.setText("Sports");
 
-        jCheckBox8.setText("jCheckBox8");
+        racing.setText("Racing");
 
         jButton3.setText("Apply Filters");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -172,13 +172,13 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(searchTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
-                            .addComponent(jCheckBox7))
+                            .addComponent(sports))
                         .addGap(58, 58, 58)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(cartBalance)
                                 .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -188,11 +188,11 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox8)
+                                    .addComponent(racing)
                                     .addComponent(jButton3)
                                     .addComponent(highToLowCheck)
-                                    .addComponent(jCheckBox6)
-                                    .addComponent(jCheckBox5)
+                                    .addComponent(action)
+                                    .addComponent(openworld)
                                     .addComponent(singleplayer)
                                     .addComponent(multiplayer)
                                     .addComponent(lowToHighCheck))
@@ -211,7 +211,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(cartBalance)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -232,13 +232,13 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(singleplayer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox5)
+                        .addComponent(openworld)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox6)
+                        .addComponent(action)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox7)
+                        .addComponent(sports)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox8)
+                        .addComponent(racing)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
@@ -266,6 +266,15 @@ public class Main extends javax.swing.JFrame {
     private void addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartActionPerformed
         // TODO add your handling code here:
         //cart.addToCart(currentDisplay);
+        
+        if(!(jList1.getSelectedValue() == null)){
+            String gameName = jList1.getSelectedValue();
+            gameName = despaceGameString(gameName);
+            Games selectedGame = gameCatalog.gameByName(gameName);
+            
+            cart.addToCart(selectedGame);
+            cartBalance.setText("Cart: $" + cart.calcValue());
+        }
         
     }//GEN-LAST:event_addToCartActionPerformed
 
@@ -303,6 +312,8 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
+        searchTextBox.setText("");
+        
         //reset
         currentDisplay = new ArrayList<>();
         for(int i = 0; i < gameCatalog.getSize(); i++){
@@ -320,6 +331,22 @@ public class Main extends javax.swing.JFrame {
         if(singleplayer.isSelected()){
             currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Singleplayer");
             //updateJList();
+        }
+        
+        if(openworld.isSelected()){
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Open World");
+        }
+        
+        if(action.isSelected()) {
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Action");
+        }
+        
+        if(sports.isSelected()) {
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Sports");
+        }
+        
+        if(racing.isSelected()) {
+            currentDisplay = gameCatalog.getGamesOfTag(currentDisplay, "Racing");
         }
         
         if(!highToLowCheck.isSelected() && !lowToHighCheck.isSelected()){
@@ -503,29 +530,38 @@ public class Main extends javax.swing.JFrame {
         });
     }
     
+    public String despaceGameString(String listVal) {
+        
+        int spaceIndex = listVal.indexOf(" ");
+        listVal = listVal.substring(spaceIndex);
+        listVal = listVal.trim();
+        
+        return listVal;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox action;
     private javax.swing.JButton addToCart;
+    private javax.swing.JLabel cartBalance;
     private javax.swing.JCheckBox highToLowCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JCheckBox lowToHighCheck;
     private javax.swing.JCheckBox multiplayer;
+    private javax.swing.JCheckBox openworld;
+    private javax.swing.JCheckBox racing;
     private javax.swing.JTextField searchTextBox;
     private javax.swing.JCheckBox singleplayer;
+    private javax.swing.JCheckBox sports;
     // End of variables declaration//GEN-END:variables
 }
 
