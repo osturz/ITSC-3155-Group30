@@ -58,6 +58,15 @@ public class Catalog {
                 index++;
             }
         }
+        
+        for(int i = 0; i < results.length; i++) {
+            if(gameByName(results[i]).getPriceString().length() == 5){
+                results[i] = gameByName(results[i]).getPriceString().concat("    " + results[i]);
+            }
+            else {
+                results[i] = gameByName(results[i]).getPriceString().concat("      " + results[i]);
+            }
+        }
         return results;
     }
     
