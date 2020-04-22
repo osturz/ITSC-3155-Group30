@@ -15,13 +15,11 @@ public class Cart {
     
     public void addToCart(Games game){
         cart.add(game);
-        //calcValue();
         
     }
     
     public void removeFromCart(Games game){
         cart.remove(game);
-        //calcValue();
     }
     /*
     public int cartSize(){

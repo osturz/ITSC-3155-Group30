@@ -13,11 +13,13 @@ public class Games {
     private String name;
     private double price;
     private ArrayList<String> categories;
+    private String description;
     
-    public Games(String name, double price, ArrayList<String> tags){
+    public Games(String name, double price, ArrayList<String> tags, String description){
         this.name = name;
         this.price = price;
         this.categories = tags;
+        this.description = description;
     }
      
     public String getName() {
@@ -34,5 +36,9 @@ public class Games {
     
     public ArrayList<String> getTags(){
         return this.categories;
+    }
+    
+    public String getDescription() {
+        return this.description;
     }
 }
