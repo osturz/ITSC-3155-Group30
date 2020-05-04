@@ -21,11 +21,7 @@ public class Cart {
     public void removeFromCart(Games game){
         cart.remove(game);
     }
-    /*
-    public int cartSize(){
-        return cart.size();
-    }
-    */
+    
     public double calcValue(){
         double value = 0.0;
         
@@ -36,7 +32,14 @@ public class Cart {
         return value;
     }
     
+    public Games getGame(int i){
+        Games g = cart.get(i);
+        return g;
+    }
     
+    public int getSize(){
+        return cart.size();
+    }
     
     
     
