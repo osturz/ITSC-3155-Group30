@@ -46,8 +46,13 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
+        CartPage = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        cartDisplay = new javax.swing.JList<>();
+        RemoveFromCart = new javax.swing.JButton();
+        Checkout = new javax.swing.JButton();
+        cartTotal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cartBalance = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -65,35 +70,74 @@ public class Main extends javax.swing.JFrame {
         racing = new javax.swing.JCheckBox();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        gameDisplay = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
         addToCart = new javax.swing.JButton();
 
-        jFrame1.setMinimumSize(new java.awt.Dimension(500, 500));
-        jFrame1.setSize(new java.awt.Dimension(500, 500));
+        CartPage.setMinimumSize(new java.awt.Dimension(500, 500));
+        CartPage.setSize(new java.awt.Dimension(500, 500));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Smoke Cart");
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
+        cartDisplay.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(cartDisplay);
+
+        RemoveFromCart.setText("Remove From Cart");
+        RemoveFromCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveFromCartActionPerformed(evt);
+            }
+        });
+
+        Checkout.setText("Checkout");
+
+        cartTotal.setText("Cart: $ 0.00");
+
+        javax.swing.GroupLayout CartPageLayout = new javax.swing.GroupLayout(CartPage.getContentPane());
+        CartPage.getContentPane().setLayout(CartPageLayout);
+        CartPageLayout.setHorizontalGroup(
+            CartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CartPageLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(CartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(CartPageLayout.createSequentialGroup()
+                        .addComponent(RemoveFromCart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Checkout)
+                        .addGap(1, 1, 1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CartPageLayout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(cartTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
+        CartPageLayout.setVerticalGroup(
+            CartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CartPageLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addGroup(CartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartTotal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RemoveFromCart)
+                    .addComponent(Checkout))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -108,7 +152,7 @@ public class Main extends javax.swing.JFrame {
         jButton1.setText("Visit Cart");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VisitCart(evt);
             }
         });
 
@@ -123,7 +167,7 @@ public class Main extends javax.swing.JFrame {
         jButton2.setText("Go");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SearchButtonPressed(evt);
             }
         });
 
@@ -172,12 +216,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        gameDisplay.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(gameDisplay);
 
         jButton4.setText("More Info");
 
@@ -234,7 +278,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(jButton4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(addToCart)))))
-                        .addGap(0, 122, Short.MAX_VALUE))))
+                        .addGap(0, 141, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,13 +342,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         //cart.addToCart(currentDisplay);
         
-        if(!(jList1.getSelectedValue() == null)){
-            String gameName = jList1.getSelectedValue();
+        if(!(gameDisplay.getSelectedValue() == null)){
+            String gameName = gameDisplay.getSelectedValue();
             gameName = despaceGameString(gameName);
             Games selectedGame = gameCatalog.gameByName(gameName);
             
             cart.addToCart(selectedGame);
             cartBalance.setText("Cart: $" + cart.calcValue());
+            cartTotal.setText("Cart: $" + cart.calcValue());
         }
         
     }//GEN-LAST:event_addToCartActionPerformed
@@ -314,7 +359,7 @@ public class Main extends javax.swing.JFrame {
             currentDisplay.add(gameCatalog.getGame(i));
         }
         
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        gameDisplay.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = gameCatalog.getNames();
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -323,15 +368,15 @@ public class Main extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SearchButtonPressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonPressed
         String searchString = searchTextBox.getText();
         String[] results = gameCatalog.searchResults(searchString);
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        gameDisplay.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = results;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SearchButtonPressed
 
     private void lowToHighCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowToHighCheckActionPerformed
         
@@ -461,9 +506,41 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_singleplayerActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jFrame1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void VisitCart(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisitCart
+        String[] gameNames = new String[cart.getSize()];
+        CartPage.setVisible(true); 
+        for(int i = 0; i < cart.getSize(); i++){
+            gameNames[i] = cart.getGame(i).getName();
+        } 
+        cartDisplay.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = gameNames;
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        
+    }//GEN-LAST:event_VisitCart
+
+    private void RemoveFromCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFromCartActionPerformed
+        if(cartDisplay.getSelectedValue() != null){
+            String gameName = cartDisplay.getSelectedValue();
+            Games selectedGame = gameCatalog.gameByName(gameName);
+            
+            cart.removeFromCart(selectedGame);
+            cartBalance.setText("Cart: $" + cart.calcValue());
+            cartTotal.setText("Cart: $" + cart.calcValue());
+            
+            String[] gameNames = new String[cart.getSize()];
+            for(int i = 0; i < cart.getSize(); i++){
+                gameNames[i] = cart.getGame(i).getName();
+            } 
+            cartDisplay.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = gameNames;
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            
+        }
+    }//GEN-LAST:event_RemoveFromCartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,7 +627,7 @@ public class Main extends javax.swing.JFrame {
         String[] displayStrings = getNamesAndPrice(dis);
 
         
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        gameDisplay.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = displayStrings;
                 public int getSize() { return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
@@ -558,7 +635,7 @@ public class Main extends javax.swing.JFrame {
     }
     //?
     public void restartJList() {
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        gameDisplay.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = new String[]{""};
                 public int getSize() { return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
@@ -577,21 +654,26 @@ public class Main extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame CartPage;
+    private javax.swing.JButton Checkout;
+    private javax.swing.JButton RemoveFromCart;
     private javax.swing.JCheckBox action;
     private javax.swing.JButton addToCart;
     private javax.swing.JLabel cartBalance;
+    private javax.swing.JList<String> cartDisplay;
+    private javax.swing.JLabel cartTotal;
+    private javax.swing.JList<String> gameDisplay;
     private javax.swing.JCheckBox highToLowCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JCheckBox lowToHighCheck;
     private javax.swing.JCheckBox multiplayer;
     private javax.swing.JCheckBox openworld;
